@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Payroll Schedule Type:"
+        android:text="@string/pay_type_label"
         android:id="@+id/incomeTypeLabel"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Income Amount:"
+        android:text="@string/income_amt_label"
         android:id="@+id/incomeLabel"
         android:layout_below="@+id/incomeTypeDD"
         android:layout_alignParentLeft="true"
@@ -52,7 +52,7 @@
     <TextView
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Amount of Expenses:"
+        android:text="@string/expenses_label_main"
         android:id="@+id/expenseLabel"
         android:layout_below="@+id/incomeInput"
         android:layout_alignParentLeft="true"
@@ -69,7 +69,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_1"
         android:id="@+id/exp1"
         android:layout_below="@+id/numberOfExp"
         android:layout_alignParentLeft="true"
@@ -78,7 +78,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_2"
         android:id="@+id/exp2"
         android:layout_below="@+id/exp1"
         android:layout_alignParentLeft="true"
@@ -87,7 +87,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_3"
         android:id="@+id/exp3"
         android:layout_below="@+id/exp2"
         android:layout_alignParentLeft="true"
@@ -96,7 +96,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_4"
         android:id="@+id/exp4"
         android:layout_below="@+id/exp3"
         android:layout_alignParentLeft="true"
@@ -105,7 +105,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_5"
         android:id="@+id/exp5"
         android:layout_below="@+id/exp4"
         android:layout_alignParentLeft="true"
@@ -114,7 +114,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_6"
         android:id="@+id/exp6"
         android:layout_below="@+id/exp5"
         android:layout_alignParentLeft="true"
@@ -123,7 +123,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_7"
         android:id="@+id/exp7"
         android:layout_below="@+id/exp6"
         android:layout_alignParentLeft="true"
@@ -132,7 +132,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_8"
         android:id="@+id/exp8"
         android:layout_below="@+id/exp7"
         android:layout_alignParentLeft="true"
@@ -141,7 +141,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_9"
         android:id="@+id/exp9"
         android:layout_below="@+id/exp8"
         android:layout_alignParentLeft="true"
@@ -150,7 +150,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/exp_10"
         android:id="@+id/exp10"
         android:layout_below="@+id/exp9"
         android:layout_alignParentLeft="true"
@@ -161,7 +161,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/expType1"
         android:layout_alignBottom="@+id/exp1"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="none" />
 
     <EditText
         android:layout_width="100dp"
@@ -315,6 +316,24 @@
         android:id="@+id/expAmt10"
         android:layout_alignBottom="@+id/exp10"
         android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:id="@+id/calcButton"
+        android:layout_below="@+id/exp10"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:id="@+id/resetButton"
+        android:layout_alignBottom="@+id/calcButton"
+        android:layout_alignRight="@+id/incomeInput"
+        android:layout_alignEnd="@+id/incomeInput" />
 
 
 </RelativeLayout>
