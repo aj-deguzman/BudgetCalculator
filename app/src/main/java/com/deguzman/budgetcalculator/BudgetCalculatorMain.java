@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
@@ -27,6 +28,9 @@ import java.util.Set;
 
 public class BudgetCalculatorMain extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener,
         AdapterView.OnItemSelectedListener {
+
+    //LogCat
+    private static final String TAG = "My LogCat";
 
     //declare variables
     private EditText incomeInput;
@@ -133,10 +137,18 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 android.R.layout.simple_spinner_item);
         expAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         numberOfExp.setAdapter(expAdapter);
+
+        Log.i(TAG, "OnCreate");
     }
 
     //declare String holder variables
     private String incomeInputString = "";
+
+    public void getIncome() {
+        incomeInputString = incomeInput.getText().toString();
+    }
+
+    //Hashmap for number of expenses
     private HashMap expHM = new HashMap();
 
     //Get set of input
@@ -145,74 +157,104 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     //Iterate through set of input
     Iterator i = set.iterator();
 
-    //perform calculations
     public void calculate() {
-        //extract values from widgets
-        incomeInputString = incomeInput.getText().toString();
-        expHM.put(expType1, expAmt1);
-        expHM.put(expType2, expAmt2);
-        expHM.put(expType3, expAmt3);
-        expHM.put(expType4, expAmt4);
-        expHM.put(expType5, expAmt5);
-        expHM.put(expType6, expAmt6);
-        expHM.put(expType7, expAmt7);
-        expHM.put(expType8, expAmt8);
-        expHM.put(expType9, expAmt9);
-        expHM.put(expType10, expAmt10);
-
-        while(i.hasNext()) {
-            Map.Entry me = (Map.Entry)i.next();
-
-            //Strings to place hm values in for display
-            String expenses = me.getKey() + "" + me.getValue();
-        }
-
-        //values for average number of days based on pay types
-        String daily = "1";
-        String weekly = "7";
-        String biweeklySemimonthly = "14";
-        String monthly = "30.42";
-        String annually = "365";
 
         //get pay type and use it as a basis for calculations based on days
+        //values for average number of days based on pay types\
         String payType = "";
         switch (incomeTypeDD.getSelectedItemPosition()) {
             case 0:
-                payType = daily;
+                payType = "1";
                 break;
             case 1:
-                payType = weekly;
+                payType = "7";
                 break;
             case 2:
-                payType = biweeklySemimonthly;
+                payType = "14";
                 break;
             case 3:
-                payType = monthly;
+                payType = "30.42";
                 break;
             case 4:
-                payType = annually;
+                payType = "365";
                 break;
         }
+
+        //extract values from expenses
+        expHM.put(expType1.getText().toString(), expAmt1.getText().toString());
+        expHM.put(expType2.getText().toString(), expAmt2.getText().toString());
+        expHM.put(expType3.getText().toString(), expAmt3.getText().toString());
+        expHM.put(expType4.getText().toString(), expAmt4.getText().toString());
+        expHM.put(expType5.getText().toString(), expAmt5.getText().toString());
+        expHM.put(expType6.getText().toString(), expAmt6.getText().toString());
+        expHM.put(expType7.getText().toString(), expAmt7.getText().toString());
+        expHM.put(expType8.getText().toString(), expAmt8.getText().toString());
+        expHM.put(expType9.getText().toString(), expAmt9.getText().toString());
+        expHM.put(expType10.getText().toString(), expAmt10.getText().toString());
+
+        //add up expenses
+        while (i.hasNext()){
+            String expAmt = (String)expHM
+        }
+
+
 
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.calcButton:
 
+                Log.i(TAG, "Calculate");
+                Log.i(TAG, expType1.getText().toString() + "" + expAmt1.getText().toString());
+        }
     }
 
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (actionId == EditorInfo.IME_ACTION_DONE ||
-                actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
-        }
-
         return false;
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        //hides expense widgets
+        exp1.setVisibility(View.GONE);
+        exp2.setVisibility(View.GONE);
+        exp3.setVisibility(View.GONE);
+        exp4.setVisibility(View.GONE);
+        exp5.setVisibility(View.GONE);
+        exp6.setVisibility(View.GONE);
+        exp7.setVisibility(View.GONE);
+        exp8.setVisibility(View.GONE);
+        exp9.setVisibility(View.GONE);
+        exp10.setVisibility(View.GONE);
+
+        expType1.setVisibility(View.GONE);
+        expType2.setVisibility(View.GONE);
+        expType3.setVisibility(View.GONE);
+        expType4.setVisibility(View.GONE);
+        expType5.setVisibility(View.GONE);
+        expType6.setVisibility(View.GONE);
+        expType7.setVisibility(View.GONE);
+        expType8.setVisibility(View.GONE);
+        expType9.setVisibility(View.GONE);
+        expType10.setVisibility(View.GONE);
+
+        expAmt1.setVisibility(View.GONE);
+        expAmt2.setVisibility(View.GONE);
+        expAmt3.setVisibility(View.GONE);
+        expAmt4.setVisibility(View.GONE);
+        expAmt5.setVisibility(View.GONE);
+        expAmt6.setVisibility(View.GONE);
+        expAmt7.setVisibility(View.GONE);
+        expAmt8.setVisibility(View.GONE);
+        expAmt9.setVisibility(View.GONE);
+        expAmt10.setVisibility(View.GONE);
+
+        //shows expense widgets based on number of expenses chosen by user
         if(numberOfExp.getSelectedItemPosition() == 0) {
             exp1.setVisibility(View.VISIBLE);
             expType1.setVisibility(View.VISIBLE);
@@ -391,39 +433,6 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
             exp10.setVisibility(View.VISIBLE);
             expType10.setVisibility(View.VISIBLE);
             expAmt10.setVisibility(View.VISIBLE);
-        } else {
-            exp1.setVisibility(View.GONE);
-            exp2.setVisibility(View.GONE);
-            exp3.setVisibility(View.GONE);
-            exp4.setVisibility(View.GONE);
-            exp5.setVisibility(View.GONE);
-            exp6.setVisibility(View.GONE);
-            exp7.setVisibility(View.GONE);
-            exp8.setVisibility(View.GONE);
-            exp9.setVisibility(View.GONE);
-            exp10.setVisibility(View.GONE);
-
-            expType1.setVisibility(View.GONE);
-            expType2.setVisibility(View.GONE);
-            expType3.setVisibility(View.GONE);
-            expType4.setVisibility(View.GONE);
-            expType5.setVisibility(View.GONE);
-            expType6.setVisibility(View.GONE);
-            expType7.setVisibility(View.GONE);
-            expType8.setVisibility(View.GONE);
-            expType9.setVisibility(View.GONE);
-            expType10.setVisibility(View.GONE);
-
-            expAmt1.setVisibility(View.GONE);
-            expAmt2.setVisibility(View.GONE);
-            expAmt3.setVisibility(View.GONE);
-            expAmt4.setVisibility(View.GONE);
-            expAmt5.setVisibility(View.GONE);
-            expAmt6.setVisibility(View.GONE);
-            expAmt7.setVisibility(View.GONE);
-            expAmt8.setVisibility(View.GONE);
-            expAmt9.setVisibility(View.GONE);
-            expAmt10.setVisibility(View.GONE);
         }
     }
 
