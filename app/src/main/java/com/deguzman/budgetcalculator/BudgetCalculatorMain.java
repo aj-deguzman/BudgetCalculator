@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class BudgetCalculatorMain extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener,
@@ -151,12 +152,6 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     //Hashmap for number of expenses
     private HashMap expHM = new HashMap();
 
-    //Get set of input
-    Set set = expHM.entrySet();
-
-    //Iterate through set of input
-    Iterator i = set.iterator();
-
     public void calculate() {
 
         //get pay type and use it as a basis for calculations based on days
@@ -192,12 +187,12 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         expHM.put(expType9.getText().toString(), expAmt9.getText().toString());
         expHM.put(expType10.getText().toString(), expAmt10.getText().toString());
 
-        //add up expenses
-        while (i.hasNext()){
-            String expAmt = (String)expHM
+        for (Object o : expHM.values()) {
+            if (expHM.containsValue(o)) {
+                double expTotal = Double.parseDouble(expHM.values().toString());
+                exp1.setText(String.valueOf(expTotal));
+            }
         }
-
-
 
     }
 
@@ -208,6 +203,8 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
 
                 Log.i(TAG, "Calculate");
                 Log.i(TAG, expType1.getText().toString() + "" + expAmt1.getText().toString());
+
+                calculate();
         }
     }
 
