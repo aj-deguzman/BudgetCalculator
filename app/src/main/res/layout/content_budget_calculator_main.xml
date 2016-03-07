@@ -73,7 +73,8 @@
         android:id="@+id/exp1"
         android:layout_below="@+id/numberOfExp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -162,70 +163,79 @@
         android:id="@+id/expType1"
         android:layout_alignBottom="@+id/exp1"
         android:layout_centerHorizontal="true"
-        android:inputType="none" />
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType2"
         android:layout_alignBottom="@+id/exp2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType3"
         android:layout_alignBottom="@+id/exp3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType4"
         android:layout_alignBottom="@+id/exp4"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType5"
         android:layout_alignBottom="@+id/exp5"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType6"
         android:layout_alignBottom="@+id/exp6"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType7"
         android:layout_alignBottom="@+id/exp7"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType8"
         android:layout_alignBottom="@+id/exp8"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType9"
         android:layout_alignBottom="@+id/exp9"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/expType10"
         android:layout_alignBottom="@+id/exp10"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="100dp"
@@ -320,7 +330,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculate"
+        android:text="@string/calculate"
         android:id="@+id/calcButton"
         android:layout_below="@+id/exp10"
         android:layout_alignParentLeft="true"
@@ -329,7 +339,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset"
+        android:text="@string/reset"
         android:id="@+id/resetButton"
         android:layout_alignBottom="@+id/calcButton"
         android:layout_alignRight="@+id/incomeInput"

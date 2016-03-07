@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -132,99 +133,6 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 android.R.layout.simple_spinner_item);
         expAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         numberOfExp.setAdapter(expAdapter);
-
-        showHideExp();
-
-    }
-
-    //Hide expenses widget until number of widgets have been chosen
-    public void showHideExp() {
-        exp1.setVisibility(View.GONE);
-        exp2.setVisibility(View.GONE);
-        exp3.setVisibility(View.GONE);
-        exp4.setVisibility(View.GONE);
-        exp5.setVisibility(View.GONE);
-        exp6.setVisibility(View.GONE);
-        exp7.setVisibility(View.GONE);
-        exp8.setVisibility(View.GONE);
-        exp9.setVisibility(View.GONE);
-        exp10.setVisibility(View.GONE);
-
-        expType1.setVisibility(View.GONE);
-        expType2.setVisibility(View.GONE);
-        expType3.setVisibility(View.GONE);
-        expType4.setVisibility(View.GONE);
-        expType5.setVisibility(View.GONE);
-        expType6.setVisibility(View.GONE);
-        expType7.setVisibility(View.GONE);
-        expType8.setVisibility(View.GONE);
-        expType9.setVisibility(View.GONE);
-        expType10.setVisibility(View.GONE);
-
-        expAmt1.setVisibility(View.GONE);
-        expAmt2.setVisibility(View.GONE);
-        expAmt3.setVisibility(View.GONE);
-        expAmt4.setVisibility(View.GONE);
-        expAmt5.setVisibility(View.GONE);
-        expAmt6.setVisibility(View.GONE);
-        expAmt7.setVisibility(View.GONE);
-        expAmt8.setVisibility(View.GONE);
-        expAmt9.setVisibility(View.GONE);
-        expAmt10.setVisibility(View.GONE);
-
-
-        switch (numberOfExp.getSelectedItemPosition()) {
-            case 0:
-                exp1.setVisibility(View.VISIBLE);
-                expType1.setVisibility(View.VISIBLE);
-                expAmt1.setVisibility(View.VISIBLE);
-                break;
-            case 1:
-                exp2.setVisibility(View.VISIBLE);
-                expType2.setVisibility(View.VISIBLE);
-                expAmt2.setVisibility(View.VISIBLE);
-                break;
-            case 2:
-                exp3.setVisibility(View.VISIBLE);
-                expType3.setVisibility(View.VISIBLE);
-                expAmt3.setVisibility(View.VISIBLE);
-                break;
-            case 3:
-                exp4.setVisibility(View.VISIBLE);
-                expType4.setVisibility(View.VISIBLE);
-                expAmt4.setVisibility(View.VISIBLE);
-                break;
-            case 4:
-                exp5.setVisibility(View.VISIBLE);
-                expType5.setVisibility(View.VISIBLE);
-                expAmt5.setVisibility(View.VISIBLE);
-                break;
-            case 5:
-                exp6.setVisibility(View.VISIBLE);
-                expType6.setVisibility(View.VISIBLE);
-                expAmt6.setVisibility(View.VISIBLE);
-                break;
-            case 6:
-                exp7.setVisibility(View.VISIBLE);
-                expType7.setVisibility(View.VISIBLE);
-                expAmt7.setVisibility(View.VISIBLE);
-                break;
-            case 7:
-                exp8.setVisibility(View.VISIBLE);
-                expType8.setVisibility(View.VISIBLE);
-                expAmt8.setVisibility(View.VISIBLE);
-                break;
-            case 8:
-                exp9.setVisibility(View.VISIBLE);
-                expType9.setVisibility(View.VISIBLE);
-                expAmt9.setVisibility(View.VISIBLE);
-                break;
-            case 9:
-                exp10.setVisibility(View.VISIBLE);
-                expType10.setVisibility(View.VISIBLE);
-                expAmt10.setVisibility(View.VISIBLE);
-                break;
-        }
     }
 
     //declare String holder variables
@@ -293,14 +201,230 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
 
     }
 
+
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_DONE ||
+                actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
+        }
+
         return false;
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(numberOfExp.getSelectedItemPosition() == 0) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 1) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 2) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+            exp3.setVisibility(View.VISIBLE);
+            expType3.setVisibility(View.VISIBLE);
+            expAmt3.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 3) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+            exp3.setVisibility(View.VISIBLE);
+            expType3.setVisibility(View.VISIBLE);
+            expAmt3.setVisibility(View.VISIBLE);
+            exp4.setVisibility(View.VISIBLE);
+            expType4.setVisibility(View.VISIBLE);
+            expAmt4.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 4) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+            exp3.setVisibility(View.VISIBLE);
+            expType3.setVisibility(View.VISIBLE);
+            expAmt3.setVisibility(View.VISIBLE);
+            exp4.setVisibility(View.VISIBLE);
+            expType4.setVisibility(View.VISIBLE);
+            expAmt4.setVisibility(View.VISIBLE);
+            exp5.setVisibility(View.VISIBLE);
+            expType5.setVisibility(View.VISIBLE);
+            expAmt5.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 5) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+            exp3.setVisibility(View.VISIBLE);
+            expType3.setVisibility(View.VISIBLE);
+            expAmt3.setVisibility(View.VISIBLE);
+            exp4.setVisibility(View.VISIBLE);
+            expType4.setVisibility(View.VISIBLE);
+            expAmt4.setVisibility(View.VISIBLE);
+            exp5.setVisibility(View.VISIBLE);
+            expType5.setVisibility(View.VISIBLE);
+            expAmt5.setVisibility(View.VISIBLE);
+            exp6.setVisibility(View.VISIBLE);
+            expType6.setVisibility(View.VISIBLE);
+            expAmt6.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 6) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+            exp3.setVisibility(View.VISIBLE);
+            expType3.setVisibility(View.VISIBLE);
+            expAmt3.setVisibility(View.VISIBLE);
+            exp4.setVisibility(View.VISIBLE);
+            expType4.setVisibility(View.VISIBLE);
+            expAmt4.setVisibility(View.VISIBLE);
+            exp5.setVisibility(View.VISIBLE);
+            expType5.setVisibility(View.VISIBLE);
+            expAmt5.setVisibility(View.VISIBLE);
+            exp6.setVisibility(View.VISIBLE);
+            expType6.setVisibility(View.VISIBLE);
+            expAmt6.setVisibility(View.VISIBLE);
+            exp7.setVisibility(View.VISIBLE);
+            expType7.setVisibility(View.VISIBLE);
+            expAmt7.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 7) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+            exp3.setVisibility(View.VISIBLE);
+            expType3.setVisibility(View.VISIBLE);
+            expAmt3.setVisibility(View.VISIBLE);
+            exp4.setVisibility(View.VISIBLE);
+            expType4.setVisibility(View.VISIBLE);
+            expAmt4.setVisibility(View.VISIBLE);
+            exp5.setVisibility(View.VISIBLE);
+            expType5.setVisibility(View.VISIBLE);
+            expAmt5.setVisibility(View.VISIBLE);
+            exp6.setVisibility(View.VISIBLE);
+            expType6.setVisibility(View.VISIBLE);
+            expAmt6.setVisibility(View.VISIBLE);
+            exp6.setVisibility(View.VISIBLE);
+            expType6.setVisibility(View.VISIBLE);
+            expAmt6.setVisibility(View.VISIBLE);
+            exp7.setVisibility(View.VISIBLE);
+            expType7.setVisibility(View.VISIBLE);
+            expAmt7.setVisibility(View.VISIBLE);
+            exp8.setVisibility(View.VISIBLE);
+            expType8.setVisibility(View.VISIBLE);
+            expAmt8.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 8) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+            exp3.setVisibility(View.VISIBLE);
+            expType3.setVisibility(View.VISIBLE);
+            expAmt3.setVisibility(View.VISIBLE);
+            exp4.setVisibility(View.VISIBLE);
+            expType4.setVisibility(View.VISIBLE);
+            expAmt4.setVisibility(View.VISIBLE);
+            exp5.setVisibility(View.VISIBLE);
+            expType5.setVisibility(View.VISIBLE);
+            expAmt5.setVisibility(View.VISIBLE);
+            exp6.setVisibility(View.VISIBLE);
+            expType6.setVisibility(View.VISIBLE);
+            expAmt6.setVisibility(View.VISIBLE);
+            exp7.setVisibility(View.VISIBLE);
+            expType7.setVisibility(View.VISIBLE);
+            expAmt7.setVisibility(View.VISIBLE);
+            exp8.setVisibility(View.VISIBLE);
+            expType8.setVisibility(View.VISIBLE);
+            expAmt8.setVisibility(View.VISIBLE);
+            exp9.setVisibility(View.VISIBLE);
+            expType9.setVisibility(View.VISIBLE);
+            expAmt9.setVisibility(View.VISIBLE);
+        } else if (numberOfExp.getSelectedItemPosition() == 9) {
+            exp1.setVisibility(View.VISIBLE);
+            expType1.setVisibility(View.VISIBLE);
+            expAmt1.setVisibility(View.VISIBLE);
+            exp2.setVisibility(View.VISIBLE);
+            expType2.setVisibility(View.VISIBLE);
+            expAmt2.setVisibility(View.VISIBLE);
+            exp3.setVisibility(View.VISIBLE);
+            expType3.setVisibility(View.VISIBLE);
+            expAmt3.setVisibility(View.VISIBLE);
+            exp4.setVisibility(View.VISIBLE);
+            expType4.setVisibility(View.VISIBLE);
+            expAmt4.setVisibility(View.VISIBLE);
+            exp5.setVisibility(View.VISIBLE);
+            expType5.setVisibility(View.VISIBLE);
+            expAmt5.setVisibility(View.VISIBLE);
+            exp6.setVisibility(View.VISIBLE);
+            expType6.setVisibility(View.VISIBLE);
+            expAmt6.setVisibility(View.VISIBLE);
+            exp7.setVisibility(View.VISIBLE);
+            expType7.setVisibility(View.VISIBLE);
+            expAmt7.setVisibility(View.VISIBLE);
+            exp8.setVisibility(View.VISIBLE);
+            expType8.setVisibility(View.VISIBLE);
+            expAmt8.setVisibility(View.VISIBLE);
+            exp9.setVisibility(View.VISIBLE);
+            expType9.setVisibility(View.VISIBLE);
+            expAmt9.setVisibility(View.VISIBLE);
+            exp10.setVisibility(View.VISIBLE);
+            expType10.setVisibility(View.VISIBLE);
+            expAmt10.setVisibility(View.VISIBLE);
+        } else {
+            exp1.setVisibility(View.GONE);
+            exp2.setVisibility(View.GONE);
+            exp3.setVisibility(View.GONE);
+            exp4.setVisibility(View.GONE);
+            exp5.setVisibility(View.GONE);
+            exp6.setVisibility(View.GONE);
+            exp7.setVisibility(View.GONE);
+            exp8.setVisibility(View.GONE);
+            exp9.setVisibility(View.GONE);
+            exp10.setVisibility(View.GONE);
 
+            expType1.setVisibility(View.GONE);
+            expType2.setVisibility(View.GONE);
+            expType3.setVisibility(View.GONE);
+            expType4.setVisibility(View.GONE);
+            expType5.setVisibility(View.GONE);
+            expType6.setVisibility(View.GONE);
+            expType7.setVisibility(View.GONE);
+            expType8.setVisibility(View.GONE);
+            expType9.setVisibility(View.GONE);
+            expType10.setVisibility(View.GONE);
+
+            expAmt1.setVisibility(View.GONE);
+            expAmt2.setVisibility(View.GONE);
+            expAmt3.setVisibility(View.GONE);
+            expAmt4.setVisibility(View.GONE);
+            expAmt5.setVisibility(View.GONE);
+            expAmt6.setVisibility(View.GONE);
+            expAmt7.setVisibility(View.GONE);
+            expAmt8.setVisibility(View.GONE);
+            expAmt9.setVisibility(View.GONE);
+            expAmt10.setVisibility(View.GONE);
+        }
     }
 
     @Override
