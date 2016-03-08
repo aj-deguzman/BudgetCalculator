@@ -23,6 +23,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class BudgetCalculatorMain extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener,
@@ -140,10 +141,6 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         Log.i(TAG, "OnCreate");
     }
 
-    private List expTypeAL = new ArrayList();
-    private List expAmtAL = new ArrayList();
-
-
     public void calculate() {
 
         //get pay type and use it as a basis for calculations based on days
@@ -168,24 +165,45 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         }
     }
 
+    private List<String> expTypeAL = new ArrayList<String>();
+    private List<String> expAmtAL = new ArrayList<String>();
+
+    public void calcExpenses(){
+        double expSum = 0;
+
+
+        for (int i=0; i<expAmtAL.size(); i++){
+            if (expAmtAL.isEmpty() == false || expAmtAL.get(i) != "") {
+                expSum = 0;
+            } else {
+                expSum = 1;
+                /*expSum += Double.parseDouble(expAmtAL.get(i));
+
+                String sum = String.valueOf(expSum);
+
+                Log.i(TAG, String.valueOf(expSum));
+
+                Log.i(TAG, sum);*/
+            }
+        }
+
+        Log.i(TAG, String.valueOf(expSum));
+
+        String st = expAmtAL.get(0);
+
+        Log.i(TAG, "String value of 0: " + st);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.calcButton:
-
                 Log.i(TAG, "Calculate");
                 Log.i(TAG, expType1.getText().toString() + "" + expAmt1.getText().toString());
 
+                calcExpenses();
 
-                if (expAmtAL.isEmpty() == false) {
-                    for (int i=0; i<expAmtAL.size(); i++){
-                        Log.i(TAG, (String) expAmtAL.get(i));
-                    }
-                } else {
-                    Log.i(TAG, "Empty");
-                }
-
-
+                break;
         }
     }
 
@@ -194,7 +212,7 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
         //put expenses type values in ArrayList
-        expTypeAL.add(expType1.getText().toString());
+        /*expTypeAL.add(expType1.getText().toString());
         expTypeAL.add(expType2.getText().toString());
         expTypeAL.add(expType3.getText().toString());
         expTypeAL.add(expType4.getText().toString());
@@ -203,11 +221,11 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         expTypeAL.add(expType7.getText().toString());
         expTypeAL.add(expType8.getText().toString());
         expTypeAL.add(expType9.getText().toString());
-        expTypeAL.add(expType10.getText().toString());
+        expTypeAL.add(expType10.getText().toString());*/
 
         //put expense amount value in ArrayList
         expAmtAL.add(expAmt1.getText().toString());
-        expAmtAL.add(expAmt2.getText().toString());
+        /*expAmtAL.add(expAmt2.getText().toString());
         expAmtAL.add(expAmt3.getText().toString());
         expAmtAL.add(expAmt4.getText().toString());
         expAmtAL.add(expAmt5.getText().toString());
@@ -215,7 +233,8 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         expAmtAL.add(expAmt7.getText().toString());
         expAmtAL.add(expAmt8.getText().toString());
         expAmtAL.add(expAmt9.getText().toString());
-        expAmtAL.add(expAmt10.getText().toString());
+        expAmtAL.add(expAmt10.getText().toString());*/
+
         return false;
     }
 
