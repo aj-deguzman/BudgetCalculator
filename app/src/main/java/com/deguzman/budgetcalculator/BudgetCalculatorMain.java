@@ -21,11 +21,9 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+
+import java.util.List;
+
 
 public class BudgetCalculatorMain extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener,
         AdapterView.OnItemSelectedListener {
@@ -142,15 +140,9 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         Log.i(TAG, "OnCreate");
     }
 
-    //declare String holder variables
-    private String incomeInputString = "";
+    private List expTypeAL = new ArrayList();
+    private List expAmtAL = new ArrayList();
 
-    public void getIncome() {
-        incomeInputString = incomeInput.getText().toString();
-    }
-
-    //Hashmap for number of expenses
-    private HashMap expHM = new HashMap();
 
     public void calculate() {
 
@@ -174,26 +166,6 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 payType = "365";
                 break;
         }
-
-        //extract values from expenses
-        expHM.put(expType1.getText().toString(), expAmt1.getText().toString());
-        expHM.put(expType2.getText().toString(), expAmt2.getText().toString());
-        expHM.put(expType3.getText().toString(), expAmt3.getText().toString());
-        expHM.put(expType4.getText().toString(), expAmt4.getText().toString());
-        expHM.put(expType5.getText().toString(), expAmt5.getText().toString());
-        expHM.put(expType6.getText().toString(), expAmt6.getText().toString());
-        expHM.put(expType7.getText().toString(), expAmt7.getText().toString());
-        expHM.put(expType8.getText().toString(), expAmt8.getText().toString());
-        expHM.put(expType9.getText().toString(), expAmt9.getText().toString());
-        expHM.put(expType10.getText().toString(), expAmt10.getText().toString());
-
-        for (Object o : expHM.values()) {
-            if (expHM.containsValue(o)) {
-                double expTotal = Double.parseDouble(expHM.values().toString());
-                exp1.setText(String.valueOf(expTotal));
-            }
-        }
-
     }
 
     @Override
@@ -204,13 +176,46 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 Log.i(TAG, "Calculate");
                 Log.i(TAG, expType1.getText().toString() + "" + expAmt1.getText().toString());
 
-                calculate();
+
+                if (expAmtAL.isEmpty() == false) {
+                    for (int i=0; i<expAmtAL.size(); i++){
+                        Log.i(TAG, (String) expAmtAL.get(i));
+                    }
+                } else {
+                    Log.i(TAG, "Empty");
+                }
+
+
         }
     }
 
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+        //put expenses type values in ArrayList
+        expTypeAL.add(expType1.getText().toString());
+        expTypeAL.add(expType2.getText().toString());
+        expTypeAL.add(expType3.getText().toString());
+        expTypeAL.add(expType4.getText().toString());
+        expTypeAL.add(expType5.getText().toString());
+        expTypeAL.add(expType6.getText().toString());
+        expTypeAL.add(expType7.getText().toString());
+        expTypeAL.add(expType8.getText().toString());
+        expTypeAL.add(expType9.getText().toString());
+        expTypeAL.add(expType10.getText().toString());
+
+        //put expense amount value in ArrayList
+        expAmtAL.add(expAmt1.getText().toString());
+        expAmtAL.add(expAmt2.getText().toString());
+        expAmtAL.add(expAmt3.getText().toString());
+        expAmtAL.add(expAmt4.getText().toString());
+        expAmtAL.add(expAmt5.getText().toString());
+        expAmtAL.add(expAmt6.getText().toString());
+        expAmtAL.add(expAmt7.getText().toString());
+        expAmtAL.add(expAmt8.getText().toString());
+        expAmtAL.add(expAmt9.getText().toString());
+        expAmtAL.add(expAmt10.getText().toString());
         return false;
     }
 
