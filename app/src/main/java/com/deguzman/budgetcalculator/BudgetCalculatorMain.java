@@ -20,8 +20,10 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -167,31 +169,30 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
 
     private List<String> expTypeAL = new ArrayList<String>();
     private List<String> expAmtAL = new ArrayList<String>();
+    private String st = "";
 
     public void calcExpenses(){
-        double expSum = 0;
-
 
         for (int i=0; i<expAmtAL.size(); i++){
-            if (expAmtAL.isEmpty() == false || expAmtAL.get(i) != "") {
-                expSum = 0;
+            if (expAmt1.getText().toString().trim().length() == 0){
+                Log.i(TAG, "checker - empty");
+                expAmtAL.remove(i);
             } else {
-                expSum = 1;
-                /*expSum += Double.parseDouble(expAmtAL.get(i));
+                Log.i(TAG, "checker - something");
+            }
 
-                String sum = String.valueOf(expSum);
+            if (expAmtAL.isEmpty() == false) {
+                Log.i(TAG, "actual - not empty: " + expAmtAL.get(i).toString());
+            } else if (expAmtAL.isEmpty() == true) {
+                Log.i(TAG, "actual - empty");
+            }
 
-                Log.i(TAG, String.valueOf(expSum));
-
-                Log.i(TAG, sum);*/
+            if (expAmtAL.get(i).toString() == " ") {
+                Log.i(TAG, "there is a blank space here");
+            } else if (expAmtAL.get(i).toString() == null) {
+                Log.i(TAG, "there is a null here");
             }
         }
-
-        Log.i(TAG, String.valueOf(expSum));
-
-        String st = expAmtAL.get(0);
-
-        Log.i(TAG, "String value of 0: " + st);
     }
 
     @Override
@@ -225,8 +226,8 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
 
         //put expense amount value in ArrayList
         expAmtAL.add(expAmt1.getText().toString());
-        /*expAmtAL.add(expAmt2.getText().toString());
-        expAmtAL.add(expAmt3.getText().toString());
+        //expAmtAL.add(expAmt2.getText().toString());
+        /*expAmtAL.add(expAmt3.getText().toString());
         expAmtAL.add(expAmt4.getText().toString());
         expAmtAL.add(expAmt5.getText().toString());
         expAmtAL.add(expAmt6.getText().toString());
