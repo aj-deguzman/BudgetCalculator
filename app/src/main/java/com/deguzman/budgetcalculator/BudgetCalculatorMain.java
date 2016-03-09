@@ -172,9 +172,15 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     private String st = "";
 
     public void calcExpenses(){
+        if (expAmt1.getText().toString().trim().length() == 0){
+            st = "";
+        } else {
+            st = expAmt1.getText().toString();
+            expAmtAL.add(st);
+        }
 
         for (int i=0; i<expAmtAL.size(); i++){
-            if (expAmt1.getText().toString().trim().length() == 0){
+            if (expAmtAL.get(i) == ""){
                 Log.i(TAG, "checker - empty");
                 expAmtAL.remove(i);
             } else {
@@ -185,12 +191,6 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 Log.i(TAG, "actual - not empty: " + expAmtAL.get(i).toString());
             } else if (expAmtAL.isEmpty() == true) {
                 Log.i(TAG, "actual - empty");
-            }
-
-            if (expAmtAL.get(i).toString() == " ") {
-                Log.i(TAG, "there is a blank space here");
-            } else if (expAmtAL.get(i).toString() == null) {
-                Log.i(TAG, "there is a null here");
             }
         }
     }
@@ -225,7 +225,7 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         expTypeAL.add(expType10.getText().toString());*/
 
         //put expense amount value in ArrayList
-        expAmtAL.add(expAmt1.getText().toString());
+
         //expAmtAL.add(expAmt2.getText().toString());
         /*expAmtAL.add(expAmt3.getText().toString());
         expAmtAL.add(expAmt4.getText().toString());
