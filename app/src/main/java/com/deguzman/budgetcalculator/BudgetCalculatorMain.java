@@ -174,18 +174,16 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         double expSum = 0.0;
 
         for (int i=0; i<expAmtAL.size(); i++){
-            if (expAmtAL.get(i) == 0.0){
-                Log.i(TAG, "expAmtAL.get(i) == 0.0");
-                Log.i(TAG, "expAmtAL.get(i): " + expAmtAL.get(i));
-                Log.i(TAG, "i: " + i);
-                Log.i(TAG, "arraylist size: " + expAmtAL.size());
-                expAmtAL.remove(i);
+            if (expAmt1.getText().toString().trim().length() == 0){
+                expAmtAL.removeAll(expAmtAL);
+                Log.i(TAG, "if");
             } else {
-                expSum =+ expAmtAL.get(i);
-                Log.i(TAG, "expSum: " + expSum);
+                expSum = expSum + expAmtAL.get(i);
+                Log.i(TAG, "else");
             }
         }
 
+        Log.i(TAG, "expSum: " + expSum);
         return expSum;
     }
 
@@ -212,20 +210,19 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 expTypeAL.add("");
                 expAmtAL.add(0.0);
             } else {
-                new ArrayList<Double>();
                 expTypeAL.add(expType1.getText().toString());
                 expAmtAL.add(Double.parseDouble(expAmt1.getText().toString()));
             }
 
-            /*if (expAmt2.getText().toString().trim().length() != 0){
-                expTypeAL.add(expType2.getText().toString());
-                expAmtAL.add(Double.parseDouble(expAmt2.getText().toString()));
-            } else {
+            if (expAmt2.getText().toString().trim().length() == 0){
                 expTypeAL.add("");
                 expAmtAL.add(0.0);
+            } else {
+                expTypeAL.add(expType2.getText().toString());
+                expAmtAL.add(Double.parseDouble(expAmt2.getText().toString()));
             }
 
-            if (expAmt3.getText().toString().trim().length() != 0){
+            /*if (expAmt3.getText().toString().trim().length() != 0){
                 expTypeAL.add(expType3.getText().toString());
                 expAmtAL.add(Double.parseDouble(expAmt3.getText().toString()));
             } else {
