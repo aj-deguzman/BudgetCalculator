@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -144,7 +145,6 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     }
 
     public void calculate() {
-
         //get pay type and use it as a basis for calculations based on days
         //values for average number of days based on pay types\
         String payType = "";
@@ -168,31 +168,23 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     }
 
     private List<String> expTypeAL = new ArrayList<String>();
-    private List<String> expAmtAL = new ArrayList<String>();
-    private String st = "";
+    private List<Double> expAmtAL = new ArrayList<Double>();
 
-    public void calcExpenses(){
-        if (expAmt1.getText().toString().trim().length() == 0){
-            st = "";
-        } else {
-            st = expAmt1.getText().toString();
-            expAmtAL.add(st);
-        }
+    public double calcExpenses(){
+        double expSum = 0.0;
 
         for (int i=0; i<expAmtAL.size(); i++){
-            if (expAmtAL.get(i) == ""){
-                Log.i(TAG, "checker - empty");
-                expAmtAL.remove(i);
+            if (expAmt1.getText().toString().trim().length() == 0){
+                Toast.makeText(null, "Please enter expense amount beginning in the first expense field",
+                        Toast.LENGTH_LONG).show();
+                expAmtAL.removeAll(expAmtAL);
             } else {
-                Log.i(TAG, "checker - something");
-            }
-
-            if (expAmtAL.isEmpty() == false) {
-                Log.i(TAG, "actual - not empty: " + expAmtAL.get(i).toString());
-            } else if (expAmtAL.isEmpty() == true) {
-                Log.i(TAG, "actual - empty");
+                expSum =+ expAmtAL.get(i);
+                Log.i(TAG, "Second if: " + expSum);
             }
         }
+
+        return expSum;
     }
 
     @Override
@@ -200,9 +192,10 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         switch (v.getId()){
             case R.id.calcButton:
                 Log.i(TAG, "Calculate");
-                Log.i(TAG, expType1.getText().toString() + "" + expAmt1.getText().toString());
+                Log.i(TAG, "Value of first exp: " + expType1.getText().toString() + "" + expAmt1.getText().toString());
+                Log.i(TAG, "Value of second exp: " + expType2.getText().toString() + "" + expAmt2.getText().toString());
 
-                calcExpenses();
+                Log.i(TAG, "Final: " + String.valueOf(calcExpenses()));
 
                 break;
         }
@@ -212,29 +205,45 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
-        //put expenses type values in ArrayList
-        /*expTypeAL.add(expType1.getText().toString());
-        expTypeAL.add(expType2.getText().toString());
-        expTypeAL.add(expType3.getText().toString());
-        expTypeAL.add(expType4.getText().toString());
-        expTypeAL.add(expType5.getText().toString());
-        expTypeAL.add(expType6.getText().toString());
-        expTypeAL.add(expType7.getText().toString());
-        expTypeAL.add(expType8.getText().toString());
-        expTypeAL.add(expType9.getText().toString());
-        expTypeAL.add(expType10.getText().toString());*/
+        if (actionId == EditorInfo.IME_ACTION_DONE ||
+                actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
+            if (expAmt1.getText().toString().trim().length() != 0) {
+                expTypeAL.add(expType1.getText().toString());
+                expAmtAL.add(Double.parseDouble(expAmt1.getText().toString()));
+            }
 
-        //put expense amount value in ArrayList
+            if (expAmt2.getText().toString().trim().length() != 0){
+                expTypeAL.add(expType2.getText().toString());
+                expAmtAL.add(Double.parseDouble(expAmt2.getText().toString()));
+            }
 
-        //expAmtAL.add(expAmt2.getText().toString());
-        /*expAmtAL.add(expAmt3.getText().toString());
-        expAmtAL.add(expAmt4.getText().toString());
-        expAmtAL.add(expAmt5.getText().toString());
-        expAmtAL.add(expAmt6.getText().toString());
-        expAmtAL.add(expAmt7.getText().toString());
-        expAmtAL.add(expAmt8.getText().toString());
-        expAmtAL.add(expAmt9.getText().toString());
-        expAmtAL.add(expAmt10.getText().toString());*/
+            if (expAmt3.getText().toString().trim().length() != 0){
+                expTypeAL.add(expType3.getText().toString());
+                expAmtAL.add(Double.parseDouble(expAmt3.getText().toString()));
+            }
+                /*
+
+
+                expTypeAL.add(expType4.getText().toString());
+                expTypeAL.add(expType5.getText().toString());
+                expTypeAL.add(expType6.getText().toString());
+                expTypeAL.add(expType7.getText().toString());
+                expTypeAL.add(expType8.getText().toString());
+                expTypeAL.add(expType9.getText().toString());
+                expTypeAL.add(expType10.getText().toString());*/
+
+            //put expense title and amount in ArrayList
+
+
+
+            /*expAmtAL.add(expAmt4.getText().toString());
+            expAmtAL.add(expAmt5.getText().toString());
+            expAmtAL.add(expAmt6.getText().toString());
+            expAmtAL.add(expAmt7.getText().toString());
+            expAmtAL.add(expAmt8.getText().toString());
+            expAmtAL.add(expAmt9.getText().toString());
+            expAmtAL.add(expAmt10.getText().toString());*/
+        }
 
         return false;
     }
