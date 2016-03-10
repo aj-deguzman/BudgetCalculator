@@ -174,13 +174,15 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         double expSum = 0.0;
 
         for (int i=0; i<expAmtAL.size(); i++){
-            if (expAmt1.getText().toString().trim().length() == 0){
-                Toast.makeText(null, "Please enter expense amount beginning in the first expense field",
-                        Toast.LENGTH_LONG).show();
-                expAmtAL.removeAll(expAmtAL);
+            if (expAmtAL.get(i) == 0.0){
+                Log.i(TAG, "expAmtAL.get(i) == 0.0");
+                Log.i(TAG, "expAmtAL.get(i): " + expAmtAL.get(i));
+                Log.i(TAG, "i: " + i);
+                Log.i(TAG, "arraylist size: " + expAmtAL.size());
+                expAmtAL.remove(i);
             } else {
                 expSum =+ expAmtAL.get(i);
-                Log.i(TAG, "Second if: " + expSum);
+                Log.i(TAG, "expSum: " + expSum);
             }
         }
 
@@ -193,9 +195,9 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
             case R.id.calcButton:
                 Log.i(TAG, "Calculate");
                 Log.i(TAG, "Value of first exp: " + expType1.getText().toString() + "" + expAmt1.getText().toString());
-                Log.i(TAG, "Value of second exp: " + expType2.getText().toString() + "" + expAmt2.getText().toString());
+                //Log.i(TAG, "Value of second exp: " + expType2.getText().toString() + "" + expAmt2.getText().toString());
 
-                Log.i(TAG, "Final: " + String.valueOf(calcExpenses()));
+                Log.i(TAG, "String.valueOf(calcExpenses(): " + String.valueOf(calcExpenses()));
 
                 break;
         }
@@ -204,22 +206,31 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
         if (actionId == EditorInfo.IME_ACTION_DONE ||
                 actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
-            if (expAmt1.getText().toString().trim().length() != 0) {
+            if (expAmt1.getText().toString().trim().length() == 0) {
+                expTypeAL.add("");
+                expAmtAL.add(0.0);
+            } else {
+                new ArrayList<Double>();
                 expTypeAL.add(expType1.getText().toString());
                 expAmtAL.add(Double.parseDouble(expAmt1.getText().toString()));
             }
 
-            if (expAmt2.getText().toString().trim().length() != 0){
+            /*if (expAmt2.getText().toString().trim().length() != 0){
                 expTypeAL.add(expType2.getText().toString());
                 expAmtAL.add(Double.parseDouble(expAmt2.getText().toString()));
+            } else {
+                expTypeAL.add("");
+                expAmtAL.add(0.0);
             }
 
             if (expAmt3.getText().toString().trim().length() != 0){
                 expTypeAL.add(expType3.getText().toString());
                 expAmtAL.add(Double.parseDouble(expAmt3.getText().toString()));
+            } else {
+                expTypeAL.add("");
+                expAmtAL.add(0.0);
             }
                 /*
 
