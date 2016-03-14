@@ -171,24 +171,27 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     private List<String> expTypeAL = new ArrayList<String>();
     private List<Double> expAmtAL = new ArrayList<Double>();
 
-    public double calcExpenses(){
+    public double calcExpenses() {
         double expSum = 0.0;
 
-        for (int i=0; i<expAmtAL.size(); i++){
-            if (expAmt1.getText().toString().trim().length() == 0 || expAmtAL.get(i) == 0.0){
-                expAmtAL.set(i, expAmtAL.get(i + 1));
-                Log.i(TAG, "if");
-                Log.i(TAG, String.valueOf(i));
-            } else if (expAmtAL.get(i) == null) {
-                expAmtAL.remove(i);
+        if (expAmt1.getText().toString().trim().length() != 0){
+            for (int i = 0; i < expAmtAL.size(); i++) {
+                if (expAmtAL.get(i) != 0.0) {
+                    expSum = expSum + expAmtAL.get(i);
+                    Log.i(TAG, "expSum at if statement: " + expSum);
+                } else if (expAmtAL.get(i) == 0.0){
+                    expAmtAL.remove(i);
+                    Log.i(TAG, "Complete from beginning!!!");
+                } else {
+                    expAmtAL.removeAll(expAmtAL);
+                }
             }
-            else {
-                expSum = expSum + expAmtAL.get(i);
-                Log.i(TAG, "else");
-            }
+        } else {
+            expAmtAL.removeAll(expAmtAL);
         }
 
-        Log.i(TAG, "expSum: " + expSum);
+        Log.i(TAG, "size of arraylist: " + String.valueOf(expAmtAL.size()));
+        Log.i(TAG, "expSum after if statement: " + expSum);
         return expSum;
     }
 
@@ -197,10 +200,10 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         switch (v.getId()){
             case R.id.calcButton:
                 Log.i(TAG, "Calculate");
-                Log.i(TAG, "Value of first exp: " + expType1.getText().toString() + "" + expAmt1.getText().toString());
-                //Log.i(TAG, "Value of second exp: " + expType2.getText().toString() + "" + expAmt2.getText().toString());
 
-                Log.i(TAG, "String.valueOf(calcExpenses(): " + String.valueOf(calcExpenses()));
+                Log.i(TAG, "String length of expAmt1: " + String.valueOf(expAmt1.getText().toString().trim().length()));
+
+                calcExpenses();
 
                 break;
         }
