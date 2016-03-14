@@ -25,6 +25,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -174,10 +175,14 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         double expSum = 0.0;
 
         for (int i=0; i<expAmtAL.size(); i++){
-            if (expAmt1.getText().toString().trim().length() == 0){
-                expAmtAL.removeAll(expAmtAL);
+            if (expAmt1.getText().toString().trim().length() == 0 || expAmtAL.get(i) == 0.0){
+                expAmtAL.set(i, expAmtAL.get(i + 1));
                 Log.i(TAG, "if");
-            } else {
+                Log.i(TAG, String.valueOf(i));
+            } else if (expAmtAL.get(i) == null) {
+                expAmtAL.remove(i);
+            }
+            else {
                 expSum = expSum + expAmtAL.get(i);
                 Log.i(TAG, "else");
             }
