@@ -22,6 +22,8 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import java.util.Arrays;
@@ -147,7 +149,8 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
 
         Log.i(TAG, "OnCreate");
 
-        //set default values for expense EditText fields
+        //set default values for EditTexts fields
+        incomeInput.setText("0.0");
         expType1.setText("Expense Name 1");
         expType2.setText("Expense Name 2");
         expType3.setText("Expense Name 3");
@@ -192,10 +195,25 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         expAmtAL.add(expAmt10);
     }
 
-    public void calculate() {
+    public double calcBudget() {
+        double budget = 0.0;
+        double payAmt = Double.parseDouble(incomeInput.getText().toString());
+        double totalExpenses = calcExpenses();
+
+        //calculate budget
+        budget = payAmt - totalExpenses;
+
+        return budget;
+    }
+
+    //calculate daily allowance til next payday
+    public double calcAllowance() {
+        double allowance = 0.0;
+
         //get pay type and use it as a basis for calculations based on days
-        //values for average number of days based on pay types\
+        //values for average number of days based on pay types
         String payType = "";
+
         switch (incomeTypeDD.getSelectedItemPosition()) {
             case 0:
                 payType = "1";
@@ -213,6 +231,15 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 payType = "365";
                 break;
         }
+
+        //parse string inputs to double
+        double totalBudget = calcBudget();
+        double payTypeDays = Double.parseDouble(payType);
+
+        //calculate daily allowance
+        allowance = totalBudget/payTypeDays;
+
+        return allowance;
     }
 
     //replace value of ArrayList element
@@ -292,11 +319,7 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
             if (Double.parseDouble(expAmtAL.get(i).getText().toString()) != 0.0) {
                 expSum = expSum + Double.parseDouble(expAmtAL.get(i).getText().toString());
             }
-
-            Log.i(TAG, "size of arraylist inside for loop: " + String.valueOf(expAmtAL.size()));
         }
-
-        Log.i(TAG, "size of arraylist: " + String.valueOf(expAmtAL.size()));
         Log.i(TAG, "expSum after if statement: " + expSum);
 
         return expSum;
@@ -306,10 +329,13 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.calcButton:
-                Log.i(TAG, "Calculate");
+                //currency number format
+                NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
+                Log.i(TAG, "Summary:" + '\n'
+                + "Your " + incomeTypeDD + " income is " + incomeInput + "." + '\n'
+                + "Your total expenses");
 
-                calcExpenses();
 
                 break;
         }
