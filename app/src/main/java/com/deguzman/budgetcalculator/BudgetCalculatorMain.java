@@ -289,11 +289,10 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         //and remove all expense type arraylist elements whos values contain ""
         //else add new value from editText
         for (int i=0; i<expAmtAL.size(); i++) {
-            if (Double.parseDouble(expAmtAL.get(i).getText().toString()) == 0.0) {
-                expAmtAL.removeAll(expAmtAL);
-            } else {
-                expSum = Double.parseDouble(expAmtAL.get(i).getText().toString());
+            if (Double.parseDouble(expAmtAL.get(i).getText().toString()) != 0.0) {
+                expSum = expSum + Double.parseDouble(expAmtAL.get(i).getText().toString());
             }
+
             Log.i(TAG, "size of arraylist inside for loop: " + String.valueOf(expAmtAL.size()));
         }
 
