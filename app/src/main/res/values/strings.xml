@@ -22,7 +22,7 @@
         <item >Weekly</item>
         <item >Biweekly or Semimonthly</item>
         <item >Monthly</item>
-        <item >Annually</item>
+        <item >Annual</item>
     </string-array>
 
     <string-array name="number_of_exp">
