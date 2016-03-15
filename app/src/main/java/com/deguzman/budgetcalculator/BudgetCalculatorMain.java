@@ -327,7 +327,7 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
 
     //print method
     public String printResults() {
-        String results = "no results!!!!!!!!";
+        String results = "";
 
         //currency number format
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
@@ -355,15 +355,15 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-                case R.id.calcButton:
-                    //create instance of Intent and execute to move to result on calculate button click
-                    Intent i = new Intent(this, display_results.class);
-                    startActivity(i);
+            case R.id.calcButton:
+                //create instance of Intent and execute to move to result on calculate button click
+                Intent i = new Intent(this, display_results.class);
+                startActivity(i);
 
                 //currency number format
                 NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
-                Log.i(TAG, "Summary:" + '\n'
+                /*Log.i(TAG, "Summary:" + '\n'
                 + "Your " + incomeTypeDD.getSelectedItem().toString() + " income is " + formatter.format(Double.parseDouble(incomeInput.getText().toString())) + '\n'
                 + "Your expenses are: " + '\n'
                         + expTypeAL.get(0).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(0).getText().toString())) + '\n'
@@ -378,7 +378,9 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                         + expTypeAL.get(9).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(9).getText().toString())) + '\n'
                 + "Your expense total is: " + formatter.format(calcExpenses()) + '\n'
                 + "Your money leftover after expenses is: " + formatter.format(calcBudget()) + "\n"
-                + "Your average daily allowance until next payday is: " + formatter.format(calcAllowance()));
+                + "Your average daily allowance until next payday is: " + formatter.format(calcAllowance()));*/
+
+                Log.i(TAG, printResults());
 
                 break;
             case R.id.resetButton:

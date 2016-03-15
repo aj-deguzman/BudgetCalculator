@@ -31,16 +31,23 @@ public class display_results extends AppCompatActivity {
         results = (TextView) findViewById(R.id.results);
 
         //set results to TextView
-        String myResults = bcm.printResults();
-        results.setText(myResults);
+        results.setText("something");
+    }
+
+    public String printMyResults() {
+        String res = bcm.printResults();
+
+        return res;
     }
 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.editButton:
                 //create instance of Intent and execute to move to result on calculate button click
-                Intent i = new Intent(this, BudgetCalculatorMain.class);
-                startActivity(i);
+                //Intent i = new Intent(this, BudgetCalculatorMain.class);
+                //startActivity(i);
+
+                results.setText(printMyResults());
 
                 break;
         }
