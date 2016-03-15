@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import org.w3c.dom.Text;
 
@@ -324,10 +325,41 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         return expSum;
     }
 
+    //print method
+    public String printResults() {
+        String results = "no results!!!!!!!!";
+
+        //currency number format
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+        results = "Summary:" + '\n'
+                + "Your " + incomeTypeDD.getSelectedItem().toString() + " income is " + formatter.format(Double.parseDouble(incomeInput.getText().toString())) + '\n'
+                + "Your expenses are: " + '\n'
+                + expTypeAL.get(0).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(0).getText().toString())) + '\n'
+                + expTypeAL.get(1).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(1).getText().toString())) + '\n'
+                + expTypeAL.get(2).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(2).getText().toString())) + '\n'
+                + expTypeAL.get(3).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(3).getText().toString())) + '\n'
+                + expTypeAL.get(4).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(4).getText().toString())) + '\n'
+                + expTypeAL.get(5).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(5).getText().toString())) + '\n'
+                + expTypeAL.get(6).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(6).getText().toString())) + '\n'
+                + expTypeAL.get(7).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(7).getText().toString())) + '\n'
+                + expTypeAL.get(8).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(8).getText().toString())) + '\n'
+                + expTypeAL.get(9).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(9).getText().toString())) + '\n'
+                + "Your expense total is: " + formatter.format(calcExpenses()) + '\n'
+                + "Your money leftover after expenses is: " + formatter.format(calcBudget()) + "\n"
+                + "Your average daily allowance until next payday is: " + formatter.format(calcAllowance());
+
+        return results;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.calcButton:
+                case R.id.calcButton:
+                    //create instance of Intent and execute to move to result on calculate button click
+                    Intent i = new Intent(this, display_results.class);
+                    startActivity(i);
+
                 //currency number format
                 NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
