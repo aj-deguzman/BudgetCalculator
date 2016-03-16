@@ -15,20 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayResults extends AppCompatActivity implements
-        AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
+        AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener {
 
     //LogCat
     private static final String TAG = "LogCat";
 
     //declare variables
     private TextView results;
-    private Button saveButton;
-    private Spinner spinnerData;
+    //private Button saveButton;
+    //private Spinner spinnerData;
     MyDBHandler dbHandler;
-
-    //retrieve string results
-    Intent intent = getIntent();
-    String mySummary = intent.getExtras().getString("Summary");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +33,27 @@ public class DisplayResults extends AppCompatActivity implements
 
         //widget references
         results = (TextView) findViewById(R.id.results);
-        spinnerData = (Spinner) findViewById(R.id.spinnerData);
+        //spinnerData = (Spinner) findViewById(R.id.spinnerData);
 
-        //spinner listener
-        spinnerData.setOnItemClickListener(this);
+        //listeners
+        //saveButton.setOnClickListener(this);
+        //spinnerData.setOnItemSelectedListener(this);
+
+        //set array adapter for spinner
+        /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_data,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerData.setAdapter(adapter);*/
+
+        //call to printDB method to show exiting data in spinner
+        //printDB();
 
         //db handler object
         dbHandler = new MyDBHandler(null, null, null, 1);
+
+        //retrieve string results
+        Intent intent = getIntent();
+        String mySummary = intent.getExtras().getString("Summary");
 
         //set results to TextView
         results.setText(mySummary);
@@ -63,6 +73,8 @@ public class DisplayResults extends AppCompatActivity implements
     }
 
     public void addToDB() {
+        Intent intent = getIntent();
+        String mySummary = intent.getExtras().getString("Summary");
         Budget budget = new Budget(mySummary);
         dbHandler.addBudgetData(budget);
         printDB();
@@ -73,19 +85,17 @@ public class DisplayResults extends AppCompatActivity implements
         String budgetSummary = dbHandler.dbToString();
 
         //Array Adapter for spinner
-        ArrayAdapter<String> adapter;
+       /* ArrayAdapter<String> adapter;
 
         //create list for spinner
         List<String> spinnerList = new ArrayList<String>();
-
-
 
         //begin adding to spinner
         spinnerList.add(budgetSummary);
         adapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_spinner_item, spinnerList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerData.setAdapter(adapter);
+        spinnerData.setAdapter(adapter);*/
 
     }
 
