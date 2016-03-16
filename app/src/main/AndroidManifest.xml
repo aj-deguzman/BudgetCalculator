@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".display_results"
+            android:name=".DisplayResults"
             android:label="@string/title_activity_display_results"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

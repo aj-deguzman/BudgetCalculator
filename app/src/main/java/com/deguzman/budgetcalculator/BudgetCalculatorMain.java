@@ -20,9 +20,6 @@ import java.util.List;
 public class BudgetCalculatorMain extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener,
         AdapterView.OnItemSelectedListener {
 
-    //LogCat
-    private static final String TAG = "My LogCat";
-
     //declare variables
     private EditText incomeInput;
     private TextView exp1;
@@ -131,8 +128,6 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 android.R.layout.simple_spinner_item);
         expAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         numberOfExp.setAdapter(expAdapter);
-
-        Log.i(TAG, "OnCreate");
 
         //set default values for EditTexts fields
         incomeInput.setText("0.0");
@@ -342,7 +337,7 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
             case R.id.calcButton:
 
                 //create instance of Intent and pass result string
-                Intent i = new Intent(this, display_results.class);
+                Intent i = new Intent(this, DisplayResults.class);
                 i.putExtra("Summary", printResults());
                 startActivity(i);
 

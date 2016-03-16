@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.deguzman.budgetcalculator.display_results"
+    tools:context=".DisplayResults"
     tools:showIn="@layout/activity_display_results">
 
     <TextView
@@ -42,4 +42,11 @@
         android:layout_centerHorizontal="true"
         android:onClick="onClick"
         android:layout_below="@id/editButton" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerData"
+        android:layout_below="@+id/saveButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
