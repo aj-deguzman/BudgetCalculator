@@ -22,6 +22,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //onCreate place our query in String
+        //adds unique id and name columns
         String query = "CREATE TABLE " + TABLE_DATA + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT "
                 + COLUMN_DATANAME + " TEXT "
@@ -32,6 +33,23 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        //delete table if it already exists
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_DATA);
+        onCreate(db);
+    }
 
+    //add new row to db
+    public void addData(Data data) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DATANAME, data.get_dataName());
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert(TABLE_DATA, null, values);
+        db.close();
+    }
+
+    //delete data from db
+    public void deleteData(String dataname) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_DATA + " WHERE " + COLUMN_DATANAME + "=\"" + dataname);
     }
 }
