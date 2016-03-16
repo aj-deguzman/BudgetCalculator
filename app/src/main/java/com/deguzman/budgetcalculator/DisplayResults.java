@@ -22,6 +22,7 @@ public class DisplayResults extends AppCompatActivity implements
 
     //declare variables
     private TextView results;
+    private TextView temp;
     //private Button saveButton;
     //private Spinner spinnerData;
     MyDBHandler dbHandler;
@@ -33,6 +34,7 @@ public class DisplayResults extends AppCompatActivity implements
 
         //widget references
         results = (TextView) findViewById(R.id.results);
+        temp = (TextView) findViewById(R.id.temp);
         //spinnerData = (Spinner) findViewById(R.id.spinnerData);
 
         //listeners
@@ -80,9 +82,16 @@ public class DisplayResults extends AppCompatActivity implements
         printDB();
     }
 
+    public void deleteFromDB(View view) {
+        String inputText = temp.getText().toString();
+        dbHandler.deleteBudgetData(inputText);
+        printDB();
+    }
+
     public void printDB() {
         //call to dbToString method
         String budgetSummary = dbHandler.dbToString();
+        temp.setText(budgetSummary);
 
         //Array Adapter for spinner
        /* ArrayAdapter<String> adapter;
