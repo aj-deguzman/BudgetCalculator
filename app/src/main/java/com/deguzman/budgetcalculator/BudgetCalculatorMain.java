@@ -356,31 +356,12 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.calcButton:
-                //create instance of Intent and execute to move to result on calculate button click
+
+                //create instance of Intent and pass result string
                 Intent i = new Intent(this, display_results.class);
+                i.putExtra("Summary", printResults());
                 startActivity(i);
 
-                //currency number format
-                NumberFormat formatter = NumberFormat.getCurrencyInstance();
-
-                /*Log.i(TAG, "Summary:" + '\n'
-                + "Your " + incomeTypeDD.getSelectedItem().toString() + " income is " + formatter.format(Double.parseDouble(incomeInput.getText().toString())) + '\n'
-                + "Your expenses are: " + '\n'
-                        + expTypeAL.get(0).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(0).getText().toString())) + '\n'
-                        + expTypeAL.get(1).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(1).getText().toString())) + '\n'
-                        + expTypeAL.get(2).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(2).getText().toString())) + '\n'
-                        + expTypeAL.get(3).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(3).getText().toString())) + '\n'
-                        + expTypeAL.get(4).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(4).getText().toString())) + '\n'
-                        + expTypeAL.get(5).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(5).getText().toString())) + '\n'
-                        + expTypeAL.get(6).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(6).getText().toString())) + '\n'
-                        + expTypeAL.get(7).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(7).getText().toString())) + '\n'
-                        + expTypeAL.get(8).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(8).getText().toString())) + '\n'
-                        + expTypeAL.get(9).getText().toString() + " - " + formatter.format(Double.parseDouble(expAmtAL.get(9).getText().toString())) + '\n'
-                + "Your expense total is: " + formatter.format(calcExpenses()) + '\n'
-                + "Your money leftover after expenses is: " + formatter.format(calcBudget()) + "\n"
-                + "Your average daily allowance until next payday is: " + formatter.format(calcAllowance()));*/
-
-                Log.i(TAG, printResults());
 
                 break;
             case R.id.resetButton:
@@ -407,27 +388,27 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 expAmt9.setText("0.0");
                 expAmt10.setText("0.0");
 
-                //add EditText to ArrayList
-                expTypeAL.add(expType1);
-                expTypeAL.add(expType2);
-                expTypeAL.add(expType3);
-                expTypeAL.add(expType4);
-                expTypeAL.add(expType5);
-                expTypeAL.add(expType6);
-                expTypeAL.add(expType7);
-                expTypeAL.add(expType8);
-                expTypeAL.add(expType9);
-                expTypeAL.add(expType10);
-                expAmtAL.add(expAmt1);
-                expAmtAL.add(expAmt2);
-                expAmtAL.add(expAmt3);
-                expAmtAL.add(expAmt4);
-                expAmtAL.add(expAmt5);
-                expAmtAL.add(expAmt6);
-                expAmtAL.add(expAmt7);
-                expAmtAL.add(expAmt8);
-                expAmtAL.add(expAmt9);
-                expAmtAL.add(expAmt10);
+                //replace EditText in ArrayList
+                expTypeAL.set(0, expType1);
+                expTypeAL.set(1, expType2);
+                expTypeAL.set(2, expType3);
+                expTypeAL.set(3, expType4);
+                expTypeAL.set(4, expType5);
+                expTypeAL.set(5, expType6);
+                expTypeAL.set(6, expType7);
+                expTypeAL.set(7, expType8);
+                expTypeAL.set(8, expType9);
+                expTypeAL.set(9, expType10);
+                expAmtAL.set(0, expAmt1);
+                expAmtAL.set(1, expAmt2);
+                expAmtAL.set(2, expAmt3);
+                expAmtAL.set(3, expAmt4);
+                expAmtAL.set(4, expAmt5);
+                expAmtAL.set(5, expAmt6);
+                expAmtAL.set(6, expAmt7);
+                expAmtAL.set(7, expAmt8);
+                expAmtAL.set(8, expAmt9);
+                expAmtAL.set(9, expAmt10);
 
                 break;
         }

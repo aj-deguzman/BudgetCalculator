@@ -365,5 +365,4 @@
         android:layout_alignRight="@+id/incomeInput"
         android:layout_alignEnd="@+id/incomeInput" />
 
-
 </RelativeLayout>

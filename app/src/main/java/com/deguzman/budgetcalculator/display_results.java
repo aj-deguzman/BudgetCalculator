@@ -30,24 +30,20 @@ public class display_results extends AppCompatActivity {
         //widget references
         results = (TextView) findViewById(R.id.results);
 
+        //retrieve string results
+        Intent intent = getIntent();
+        String mySummary = intent.getExtras().getString("Summary");
+
         //set results to TextView
-        results.setText("something");
-    }
-
-    public String printMyResults() {
-        String res = bcm.printResults();
-
-        return res;
+        results.setText(mySummary);
     }
 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.editButton:
                 //create instance of Intent and execute to move to result on calculate button click
-                //Intent i = new Intent(this, BudgetCalculatorMain.class);
-                //startActivity(i);
-
-                results.setText(printMyResults());
+                Intent i = new Intent(this, BudgetCalculatorMain.class);
+                startActivity(i);
 
                 break;
         }
