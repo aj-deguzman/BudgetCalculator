@@ -7,16 +7,12 @@ import android.view.View;
 import android.content.Intent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DisplayResults extends AppCompatActivity implements
-        AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener {
+        AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
     //LogCat
     private static final String TAG = "LogCat";
@@ -62,35 +58,18 @@ public class DisplayResults extends AppCompatActivity implements
         results.setText(mySummary);
     }
 
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.editButton:
-                //return to previous activity
-                onBackPressed();
-
-                break;
-            case R.id.saveButton:
-                //triggers to save summary string to DB on button click
-                addToDB();
-
-                break;
-            case R.id.deleteButton:
-                //triggers to a delete a summary string to DB on button click
-                deleteFromDB();
-
-                break;
-        }
+    public void onEditClick(View v) {
+        //return to previous activity
+        onBackPressed();
     }
 
-    public void addToDB() {
-        //Intent intent = getIntent();
-        //intent.getExtras().getString("Summary");
+    public void onSaveClick(View v) {
         Budget budget = new Budget(myTest.getText().toString());
         dbHandler.addBudgetData(budget);
         printDB();
     }
 
-    public void deleteFromDB() {
+    public void onDeleteClick(View v) {
         String inputText = temp.getText().toString();
         dbHandler.deleteBudgetData(inputText);
         printDB();

@@ -21,7 +21,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:maxLength="1000000"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:textColor="#228b22" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
         android:text="Edit"
         android:id="@+id/editButton"
         android:layout_alignParentLeft="true"
-        android:onClick="onClick"
+        android:onClick="onEditClick"
         android:layout_below="@id/results" />
 
     <Button
@@ -38,7 +39,7 @@
         android:text="Save"
         android:id="@+id/saveButton"
         android:layout_centerHorizontal="true"
-        android:onClick="onClick"
+        android:onClick="onSaveClick"
         android:layout_below="@id/results" />
 
     <Button
@@ -48,7 +49,7 @@
         android:id="@+id/deleteButton"
         android:layout_centerHorizontal="true"
         android:layout_alignParentRight="true"
-        android:onClick="onClick"
+        android:onClick="onDeleteClick"
         android:layout_below="@id/results" />
 
     <EditText
@@ -58,7 +59,8 @@
         android:layout_centerHorizontal="true"
         android:inputType="text"
         android:textSize="12sp"
-        android:layout_below="@id/saveButton"/>
+        android:layout_below="@id/saveButton"
+        android:layout_marginTop="50dp" />
 
     <TextView
         android:layout_width="wrap_content"
