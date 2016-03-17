@@ -164,7 +164,8 @@
         android:layout_alignBottom="@+id/exp1"
         android:layout_centerHorizontal="true"
         android:inputType="text"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:layout_marginTop="25dp" />
 
     <EditText
         android:layout_width="100dp"
@@ -245,7 +246,8 @@
         android:layout_alignBottom="@+id/exp10"
         android:layout_centerHorizontal="true"
         android:inputType="text"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:layout_marginTop="25dp" />
 
     <EditText
         android:layout_width="100dp"
@@ -364,5 +366,21 @@
         android:layout_alignBottom="@+id/calcButton"
         android:layout_alignRight="@+id/incomeInput"
         android:layout_alignEnd="@+id/incomeInput" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Budget Summary History:"
+        android:id="@+id/sumHxLabel"
+        android:layout_below="@+id/calcButton"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/summaryHx"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sumHxLabel" />
+
 
 </RelativeLayout>

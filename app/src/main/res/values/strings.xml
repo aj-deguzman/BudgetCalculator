@@ -40,6 +40,14 @@
 
     <string name="title_activity_display_results">display_results</string>
 
+    <string-array name="summary_hx">
+        <item>Summary 1</item>
+        <item>Summary 2</item>
+        <item>Summary 3</item>
+        <item>Summary 4</item>
+        <item>Summary 5</item>
+    </string-array>
+
     <!--<string-array name="spinner_data">
         <item>1</item>
         <item>2</item>

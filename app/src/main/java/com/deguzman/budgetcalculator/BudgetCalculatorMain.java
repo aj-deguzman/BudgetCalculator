@@ -54,6 +54,7 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
     private EditText expAmt10;
     private Spinner incomeTypeDD;
     private Spinner numberOfExp;
+    private Spinner summaryHx;
     private Button calcButton;
     private Button resetButton;
     private List<EditText> expTypeAL = new ArrayList<EditText>();
@@ -99,6 +100,7 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
         expAmt10 = (EditText) findViewById(R.id.expAmt10);
         incomeTypeDD = (Spinner) findViewById(R.id.incomeTypeDD);
         numberOfExp = (Spinner) findViewById(R.id.numberOfExp);
+        summaryHx = (Spinner) findViewById(R.id.summaryHx);
         calcButton = (Button) findViewById(R.id.calcButton);
         resetButton = (Button) findViewById(R.id.resetButton);
 
@@ -128,6 +130,10 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
                 android.R.layout.simple_spinner_item);
         expAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         numberOfExp.setAdapter(expAdapter);
+        ArrayAdapter<CharSequence> sumAdapter = ArrayAdapter.createFromResource(this, R.array.summary_hx,
+                android.R.layout.simple_spinner_item);
+        expAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        summaryHx.setAdapter(sumAdapter);
 
         //set default values for EditTexts fields
         incomeInput.setText("0.0");
