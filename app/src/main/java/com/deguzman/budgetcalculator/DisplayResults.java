@@ -25,7 +25,7 @@ public class DisplayResults extends AppCompatActivity implements
     private TextView results;
     private EditText myTest;
     private TextView temp;
-    //private Spinner spinnerData;
+    private Spinner spinnerData;
     MyDBHandler dbHandler;
 
     @Override
@@ -37,7 +37,7 @@ public class DisplayResults extends AppCompatActivity implements
         results = (TextView) findViewById(R.id.results);
         myTest = (EditText) findViewById(R.id.myTest);
         temp = (TextView) findViewById(R.id.temp);
-        //spinnerData = (Spinner) findViewById(R.id.spinnerData);
+        spinnerData = (Spinner) findViewById(R.id.spinnerData);
 
         //db handler object
         dbHandler = new MyDBHandler(this, null, null, 1);
@@ -46,10 +46,10 @@ public class DisplayResults extends AppCompatActivity implements
         //spinnerData.setOnItemSelectedListener(this);
 
         //set array adapter for spinner
-        /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_data,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerData.setAdapter(adapter);*/
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.summary_hx,
+                R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+        spinnerData.setAdapter(adapter);
 
         //call to printDB method to show exiting data
         //printDB();

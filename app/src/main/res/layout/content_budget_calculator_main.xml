@@ -20,7 +20,8 @@
         android:id="@+id/incomeTypeLabel"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <Spinner
         android:layout_width="100dp"
@@ -37,7 +38,8 @@
         android:id="@+id/incomeLabel"
         android:layout_below="@+id/incomeTypeDD"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -56,7 +58,8 @@
         android:id="@+id/expenseLabel"
         android:layout_below="@+id/incomeInput"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <Spinner
         android:layout_width="100dp"
@@ -74,7 +77,8 @@
         android:layout_below="@+id/numberOfExp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,7 +87,8 @@
         android:id="@+id/exp2"
         android:layout_below="@+id/exp1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -92,7 +97,8 @@
         android:id="@+id/exp3"
         android:layout_below="@+id/exp2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -101,7 +107,8 @@
         android:id="@+id/exp4"
         android:layout_below="@+id/exp3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,7 +117,8 @@
         android:id="@+id/exp5"
         android:layout_below="@+id/exp4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -119,7 +127,8 @@
         android:id="@+id/exp6"
         android:layout_below="@+id/exp5"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -128,7 +137,8 @@
         android:id="@+id/exp7"
         android:layout_below="@+id/exp6"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -137,7 +147,8 @@
         android:id="@+id/exp8"
         android:layout_below="@+id/exp7"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -146,7 +157,8 @@
         android:id="@+id/exp9"
         android:layout_below="@+id/exp8"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -155,7 +167,8 @@
         android:id="@+id/exp10"
         android:layout_below="@+id/exp9"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
 
     <EditText
         android:layout_width="100dp"
@@ -373,7 +386,8 @@
         android:text="Budget Summary History:"
         android:id="@+id/sumHxLabel"
         android:layout_below="@+id/calcButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000" />
 
     <Spinner
         android:layout_width="100dp"
