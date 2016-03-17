@@ -28,8 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Edit"
         android:id="@+id/editButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
         android:onClick="onClick"
         android:layout_below="@id/results" />
 
@@ -38,10 +37,28 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/saveButton"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:onClick="onClick"
-        android:layout_below="@id/editButton" />
+        android:layout_below="@id/results" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/deleteButton"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onClick"
+        android:layout_below="@id/results" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/myTest"
+        android:layout_centerHorizontal="true"
+        android:inputType="text"
+        android:textSize="12sp"
+        android:layout_below="@id/saveButton"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,11 +66,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="DB Summary:"
         android:id="@+id/temp"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:maxLength="1000000"
         android:textSize="13sp"
-        android:layout_below="@id/saveButton" />
+        android:layout_below="@id/myTest" />
 
     <!--<Spinner
         android:layout_width="wrap_content"

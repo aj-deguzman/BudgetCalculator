@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,8 +23,8 @@ public class DisplayResults extends AppCompatActivity implements
 
     //declare variables
     private TextView results;
+    private EditText myTest;
     private TextView temp;
-    //private Button saveButton;
     //private Spinner spinnerData;
     MyDBHandler dbHandler;
 
@@ -34,11 +35,14 @@ public class DisplayResults extends AppCompatActivity implements
 
         //widget references
         results = (TextView) findViewById(R.id.results);
+        myTest = (EditText) findViewById(R.id.myTest);
         temp = (TextView) findViewById(R.id.temp);
         //spinnerData = (Spinner) findViewById(R.id.spinnerData);
 
+        //db handler object
+        dbHandler = new MyDBHandler(this, null, null, 1);
+
         //listeners
-        //saveButton.setOnClickListener(this);
         //spinnerData.setOnItemSelectedListener(this);
 
         //set array adapter for spinner
@@ -47,11 +51,8 @@ public class DisplayResults extends AppCompatActivity implements
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerData.setAdapter(adapter);*/
 
-        //call to printDB method to show exiting data in spinner
+        //call to printDB method to show exiting data
         //printDB();
-
-        //db handler object
-        dbHandler = new MyDBHandler(null, null, null, 1);
 
         //retrieve string results
         Intent intent = getIntent();
@@ -71,18 +72,25 @@ public class DisplayResults extends AppCompatActivity implements
             case R.id.saveButton:
                 //triggers to save summary string to DB on button click
                 addToDB();
+
+                break;
+            case R.id.deleteButton:
+                //triggers to a delete a summary string to DB on button click
+                deleteFromDB();
+
+                break;
         }
     }
 
     public void addToDB() {
-        Intent intent = getIntent();
-        String mySummary = intent.getExtras().getString("Summary");
-        Budget budget = new Budget(mySummary);
+        //Intent intent = getIntent();
+        //intent.getExtras().getString("Summary");
+        Budget budget = new Budget(myTest.getText().toString());
         dbHandler.addBudgetData(budget);
         printDB();
     }
 
-    public void deleteFromDB(View view) {
+    public void deleteFromDB() {
         String inputText = temp.getText().toString();
         dbHandler.deleteBudgetData(inputText);
         printDB();

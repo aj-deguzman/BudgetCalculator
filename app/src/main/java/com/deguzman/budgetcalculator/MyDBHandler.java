@@ -11,7 +11,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     //declare variables
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "budget.db";
-    public static final String TABLE_DATA = "budget";
+    public static final String TABLE_BUDGET = "budget";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_BUDGETNAME = "budgetName";
 
@@ -23,7 +23,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //onCreate place our query in String
         //adds unique id and name columns
-        String query = "CREATE TABLE " + TABLE_DATA + "("
+        String query = "CREATE TABLE " + TABLE_BUDGET + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT "
                 + COLUMN_BUDGETNAME + " TEXT "
                 + ");";
@@ -34,7 +34,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //delete table if it already exists
-        db.execSQL("DROP TABLE IF EXISTS" + TABLE_DATA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BUDGET);
         onCreate(db);
     }
 
@@ -43,14 +43,14 @@ public class MyDBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_BUDGETNAME, budget.get_budgetName());
         SQLiteDatabase db = getWritableDatabase();
-        db.insert(TABLE_DATA, null, values);
+        db.insert(TABLE_BUDGET, null, values);
         db.close();
     }
 
     //delete data from db
     public void deleteBudgetData(String budgetName) {
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_DATA
+        db.execSQL("DELETE FROM " + TABLE_BUDGET
                 + " WHERE " + COLUMN_BUDGETNAME + "=\"" + budgetName + "\";");
     }
 
@@ -58,15 +58,15 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public String dbToString() {
         String dbString = "";
         SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + " WHERE 1";
+        String query = "SELECT * FROM " + "WHERE 1";
 
-        //Cursor
+        //Cursor to point to first row
         Cursor c = db.rawQuery(query, null);
-
-        //move to beginning
         c.moveToFirst();
 
-        while (c.isAfterLast()) {
+        //make sure pointer is not at last row
+        //then loop through rows and print rows
+        while (!c.isAfterLast()) {
             if (c.getString(c.getColumnIndex("budgetName")) != null) {
                 dbString += c.getString(c.getColumnIndex("budgetName"));
                 dbString += "\n";

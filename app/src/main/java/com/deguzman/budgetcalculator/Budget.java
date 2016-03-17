@@ -19,12 +19,12 @@ public class Budget {
         this._id = _id;
     }
 
-    public void set_dataName(String _budgetName) {
-        this._budgetName = _budgetName;
-    }
-
     public int get_id() {
         return _id;
+    }
+
+    public void set_budgetName(String _budgetName) {
+        this._budgetName = _budgetName;
     }
 
     public String get_budgetName() {
