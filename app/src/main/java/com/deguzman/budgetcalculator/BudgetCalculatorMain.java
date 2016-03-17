@@ -123,12 +123,12 @@ public class BudgetCalculatorMain extends AppCompatActivity implements TextView.
 
         //set array adapter for spinners
         ArrayAdapter<CharSequence> incomeTypeAdapter = ArrayAdapter.createFromResource(this, R.array.income_type,
-                R.layout.spinner_item);
-        incomeTypeAdapter.setDropDownViewResource(R.layout.spinner_item);
+                R.layout.spinner_item2);
+        incomeTypeAdapter.setDropDownViewResource(R.layout.spinner_item2);
         incomeTypeDD.setAdapter(incomeTypeAdapter);
         ArrayAdapter<CharSequence> expAdapter = ArrayAdapter.createFromResource(this, R.array.number_of_exp,
-                R.layout.spinner_item);
-        expAdapter.setDropDownViewResource(R.layout.spinner_item);
+                R.layout.spinner_item2);
+        expAdapter.setDropDownViewResource(R.layout.spinner_item2);
         numberOfExp.setAdapter(expAdapter);
         ArrayAdapter<CharSequence> sumAdapter = ArrayAdapter.createFromResource(this, R.array.summary_hx,
                 R.layout.spinner_item);
