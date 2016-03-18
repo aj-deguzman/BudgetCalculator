@@ -13,7 +13,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "budget.db";
     public static final String TABLE_BUDGET = "budget";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_BUDGETNAME = "budgetName";
+    public static final String COLUMN_BUDGETSUMMARY = "budgetName";
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -25,7 +25,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         //adds unique id and name columns
         String query = "CREATE TABLE " + TABLE_BUDGET + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT "
-                + COLUMN_BUDGETNAME + " TEXT "
+                + COLUMN_BUDGETSUMMARY + " TEXT "
                 + ");";
         //execute our query
         db.execSQL(query);
@@ -39,9 +39,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     //add new row to db
-    public void addBudgetData(Budget budget) {
+    public void addBudgetData(Budgets budget) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_BUDGETNAME, budget.get_budgetName());
+        values.put(COLUMN_BUDGETSUMMARY, budget.get_budgetName());
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_BUDGET, null, values);
         db.close();
@@ -51,7 +51,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void deleteBudgetData(String budgetName) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_BUDGET
-                + " WHERE " + COLUMN_BUDGETNAME + "=\"" + budgetName + "\";");
+                + " WHERE " + COLUMN_BUDGETSUMMARY + "=\"" + budgetName + "\";");
     }
 
     //print db as String

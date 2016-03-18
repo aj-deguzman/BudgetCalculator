@@ -2,7 +2,6 @@ package com.deguzman.budgetcalculator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.content.Intent;
 import android.widget.AdapterView;
@@ -64,7 +63,7 @@ public class DisplayResults extends AppCompatActivity implements
     }
 
     public void onSaveClick(View v) {
-        Budget budget = new Budget(myTest.getText().toString());
+        Budgets budget = new Budgets(myTest.getText().toString());
         dbHandler.addBudgetData(budget);
         printDB();
     }

@@ -1,16 +1,16 @@
 package com.deguzman.budgetcalculator;
 
-public class Budget {
+public class Budgets {
 
     //declare variables
     private int _id;
     private String _budgetName;
 
     //constructors
-    public Budget() {
+    public Budgets() {
     }
 
-    public Budget(String budgetName) {
+    public Budgets(String budgetName) {
         this._budgetName = budgetName;
     }
 
