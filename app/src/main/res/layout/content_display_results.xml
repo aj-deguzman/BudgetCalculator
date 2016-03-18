@@ -52,7 +52,7 @@
         android:onClick="onDeleteClick"
         android:layout_below="@id/results" />
 
-    <EditText
+    <!--<EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/myTest"
@@ -71,7 +71,7 @@
         android:layout_centerHorizontal="true"
         android:maxLength="1000000"
         android:textSize="13sp"
-        android:layout_below="@id/myTest" />
+        android:layout_below="@id/myTest" />-->
 
     <Spinner
         android:layout_width="wrap_content"
