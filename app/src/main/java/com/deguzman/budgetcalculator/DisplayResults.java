@@ -18,8 +18,8 @@ public class DisplayResults extends AppCompatActivity implements
 
     //declare variables
     private TextView results;
-    //private EditText myTest;
-    //private TextView temp;
+    private EditText myTest;
+    private TextView temp;
     private Spinner spinnerData;
     MyDBHandler dbHandler;
 
@@ -30,8 +30,8 @@ public class DisplayResults extends AppCompatActivity implements
 
         //widget references
         results = (TextView) findViewById(R.id.results);
-        //myTest = (EditText) findViewById(R.id.myTest);
-        //temp = (TextView) findViewById(R.id.temp);
+        myTest = (EditText) findViewById(R.id.myTest);
+        temp = (TextView) findViewById(R.id.temp);
         spinnerData = (Spinner) findViewById(R.id.spinnerData);
 
         //db handler object
@@ -62,7 +62,7 @@ public class DisplayResults extends AppCompatActivity implements
         onBackPressed();
     }
 
-    /*public void onSaveClick(View v) {
+    public void onSaveClick(View v) {
         Budgets budget = new Budgets(myTest.getText().toString());
         dbHandler.addBudgetData(budget);
         printDB();
@@ -80,7 +80,7 @@ public class DisplayResults extends AppCompatActivity implements
         temp.setText(budgetSummary);
 
         //Array Adapter for spinner
-       ArrayAdapter<String> adapter;
+      /* ArrayAdapter<String> adapter;
 
         //create list for spinner
         List<String> spinnerList = new ArrayList<String>();
@@ -90,9 +90,9 @@ public class DisplayResults extends AppCompatActivity implements
         adapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_spinner_item, spinnerList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerData.setAdapter(adapter);
+        spinnerData.setAdapter(adapter);*/
 
-    }*/
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

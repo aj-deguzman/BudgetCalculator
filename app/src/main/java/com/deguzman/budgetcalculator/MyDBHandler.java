@@ -24,7 +24,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         //onCreate place our query in String
         //adds unique id and name columns
         String query = "CREATE TABLE " + TABLE_BUDGET + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT "
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_BUDGETSUMMARY + " TEXT "
                 + ");";
         //execute our query
@@ -58,7 +58,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public String dbToString() {
         String dbString = "";
         SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + "WHERE 1";
+        String query = "SELECT * FROM " + TABLE_BUDGET + " WHERE 1";
 
         //Cursor to point to first row
         Cursor c = db.rawQuery(query, null);
