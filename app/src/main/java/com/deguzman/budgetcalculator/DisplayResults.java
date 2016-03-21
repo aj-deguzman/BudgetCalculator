@@ -63,14 +63,17 @@ public class DisplayResults extends AppCompatActivity implements
     }
 
     public void onSaveClick(View v) {
-        Budgets budget = new Budgets(myTest.getText().toString());
+        Intent intent = getIntent();
+        String mySummary = intent.getExtras().getString("Summary");
+        Budgets budget = new Budgets(mySummary);
         dbHandler.addBudgetData(budget);
         printDB();
     }
 
     public void onDeleteClick(View v) {
-        String inputText = temp.getText().toString();
-        dbHandler.deleteBudgetData(inputText);
+        Intent intent = getIntent();
+        String mySummary = intent.getExtras().getString("Summary");
+        dbHandler.deleteBudgetData(mySummary);
         printDB();
     }
 

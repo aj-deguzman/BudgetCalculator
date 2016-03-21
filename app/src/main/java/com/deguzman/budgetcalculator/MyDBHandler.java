@@ -34,7 +34,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //delete table if it already exists
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BUDGET);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_BUDGET);
         onCreate(db);
     }
 
@@ -71,6 +71,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 dbString += c.getString(c.getColumnIndex("budgetName"));
                 dbString += "\n";
             }
+            c.moveToNext();
         }
 
         db.close();
