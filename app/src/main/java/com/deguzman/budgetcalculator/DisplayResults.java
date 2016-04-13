@@ -14,7 +14,7 @@ public class DisplayResults extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
     //LogCat
-    private static final String TAG = "LogCat";
+    //private static final String TAG = "LogCat";
 
     //declare variables
     private TextView results;
@@ -30,8 +30,8 @@ public class DisplayResults extends AppCompatActivity implements
 
         //widget references
         results = (TextView) findViewById(R.id.results);
-        myTest = (EditText) findViewById(R.id.myTest);
-        temp = (TextView) findViewById(R.id.temp);
+        //myTest = (EditText) findViewById(R.id.myTest);
+        //temp = (TextView) findViewById(R.id.temp);
         spinnerData = (Spinner) findViewById(R.id.spinnerData);
 
         //db handler object
@@ -55,6 +55,8 @@ public class DisplayResults extends AppCompatActivity implements
 
         //set results to TextView
         results.setText(mySummary);
+
+        //printDB();
     }
 
     public void onEditClick(View v) {
@@ -63,17 +65,14 @@ public class DisplayResults extends AppCompatActivity implements
     }
 
     public void onSaveClick(View v) {
-        Intent intent = getIntent();
-        String mySummary = intent.getExtras().getString("Summary");
-        Budgets budget = new Budgets(mySummary);
+        Budgets budget = new Budgets(myTest.getText().toString());
         dbHandler.addBudgetData(budget);
         printDB();
     }
 
     public void onDeleteClick(View v) {
-        Intent intent = getIntent();
-        String mySummary = intent.getExtras().getString("Summary");
-        dbHandler.deleteBudgetData(mySummary);
+        String inputText = temp.getText().toString();
+        dbHandler.deleteBudgetData(inputText);
         printDB();
     }
 
@@ -83,7 +82,7 @@ public class DisplayResults extends AppCompatActivity implements
         temp.setText(budgetSummary);
 
         //Array Adapter for spinner
-      /* ArrayAdapter<String> adapter;
+       /*ArrayAdapter<String> adapter;
 
         //create list for spinner
         List<String> spinnerList = new ArrayList<String>();
